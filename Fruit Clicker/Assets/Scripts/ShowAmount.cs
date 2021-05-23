@@ -25,15 +25,14 @@ public class ShowAmount : MonoBehaviour {
 
         // Displayed fruit x apples
         type = " " + SaveData.fruitName[fruitID].ToLower() + "s";
-        
     }
 
-    void Update () {
-
+    void Update ()
+    {
         // Display
         display.text = SaveData.FruitFix(SaveData.Fruits[fruitID, 0], 3) + type;
         perClickDisplay.text = SaveData.FruitFix(SaveData.Fruits[fruitID, 1], 3) + " per click";
         perSecDisplay.text = SaveData.FruitFix(SaveData.Fruits[fruitID, 2], 3) + " per second";
-
     }
+
 }

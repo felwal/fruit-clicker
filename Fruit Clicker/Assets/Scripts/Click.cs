@@ -7,9 +7,9 @@ public class Click : MonoBehaviour {
     public int fruitID;
     int count = 0;
 
-    public void Clicked() {
-
-        if(SaveData.Fruits[fruitID, 1] < 1) {
+    public void Clicked()
+    {
+        if (SaveData.Fruits[fruitID, 1] < 1) {
 
             count++;
             float frequency = 1 / SaveData.Fruits[fruitID, 1];
@@ -20,12 +20,10 @@ public class Click : MonoBehaviour {
             }
             //else { count++; }
 
-                
-
-
         }
         else {
             SaveData.Fruits[fruitID, 0] += SaveData.Fruits[fruitID, 1];
         }
     }
+
 }

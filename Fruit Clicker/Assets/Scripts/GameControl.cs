@@ -10,24 +10,27 @@ public class GameControl : MonoBehaviour {
 
     // Scenemanager
     public string sceneToLoad;
-    public void LoadScene() {
-
+    public void LoadScene()
+    {
         if(sceneToLoad == "back") {
             // Start
             if (PlayerPrefs.GetString("lastLoadedScene") == SceneManager.GetActiveScene().name) {
-                SceneManager.LoadScene("Start"); }
+                SceneManager.LoadScene("Start");
+            }
             // Back
             else {
-                SceneManager.LoadScene(PlayerPrefs.GetString("lastLoadedScene")); }
-        }            
+                SceneManager.LoadScene(PlayerPrefs.GetString("lastLoadedScene"));
+            }
+        }
         else {
             PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
-            SceneManager.LoadScene(sceneToLoad); }
+            SceneManager.LoadScene(sceneToLoad);
+        }
     }
 
     // Gamesave
-    public void Save() {
-
+    public void Save()
+    {
         string path = Application.persistentDataPath + "/playerInfo.dat";
 
         // create formatter and filestream
@@ -44,8 +47,8 @@ public class GameControl : MonoBehaviour {
         formatter.Serialize(stream, data);
         stream.Close();
     }
-    public void Load() {
-
+    public void Load()
+    {
         string path = Application.persistentDataPath + "/playerInfo.dat";
 
         if (File.Exists(path)) {
@@ -77,19 +80,20 @@ public class GameControl : MonoBehaviour {
 
 public static class SaveData {
 
-    /*  New fruits:
+    /* New fruits:
             1. Stock values
             2. Shop.itemName
-            Unity: 
+            Unity:
                 3. fruitID Clicker & Display
                 4. Urn Display
-                5. Map 
+                5. Map
                 6. save game */
 
     // Stock values
     public static float[,] StockFruits()
     {
-        float[,] fruitStock = { // amount, perClick, perSec
+        float[,] fruitStock =
+        { // amount, perClick, perSec
             { 0, 1, 0 },    // apple
             { 0, 1, 0 },    // pear
             { 0, 1, 0 },    // banana
@@ -99,7 +103,8 @@ public static class SaveData {
     }
     public static float[,,] StockShop()
     {
-        float[,,] shopStock = { // cost, level, add
+        float[,,] shopStock =
+        { // cost, level, add
             { // apple
                 { 0,   0,  2 }, // multi
                 { 0,   0,  0.1f },
@@ -131,8 +136,10 @@ public static class SaveData {
         };
         return shopStock;
     }
-    public static string[] fruitName = { // .Length important
-        "Apple", "Pear", "Banana", "Coconut" };
+    public static string[] fruitName =
+    { // .Length important
+        "Apple", "Pear", "Banana", "Coconut"
+    };
 
     // Start & Get Set
     private static float[,] fruits = StockFruits();

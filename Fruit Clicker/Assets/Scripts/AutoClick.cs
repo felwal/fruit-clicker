@@ -6,8 +6,8 @@ public class AutoClick : MonoBehaviour {
 
     public static AutoClick autoClick; // create static instance of class AutoClick
 
-    void Awake () {
-
+    void Awake ()
+    {
         // DontDestroyOnLoad
         if (autoClick == null) {
             DontDestroyOnLoad(gameObject);
@@ -27,8 +27,8 @@ public class AutoClick : MonoBehaviour {
     }
 
     // Start Coroutines
-    public void AutoUpdate() { 
-
+    public void AutoUpdate()
+    {
         for (int id = 0; id < SaveData.fruitName.Length; id++) {
             if (SaveData.Fruits[id, 2] != 0) {
 
@@ -42,17 +42,19 @@ public class AutoClick : MonoBehaviour {
         }
     }
 
-    // Coroutines
-    IEnumerator EveryUpdate(int id, float repeatRate) {
-
+    // Coroutine
+    IEnumerator EveryUpdate(int id, float repeatRate)
+    {
         while (true) {
             yield return new WaitForSeconds(repeatRate);
             SaveData.Fruits[id, 0]++;
         }
     }
-    // bara generellt för långsam
-    IEnumerator Every10(int id) {
 
+    // Coroutine
+    IEnumerator Every10(int id)
+    {
+        // bara generellt för långsam
         while (true) {
             yield return new WaitForSeconds(0.1f);
             SaveData.Fruits[id, 0] += (SaveData.Fruits[id, 2] / 10);

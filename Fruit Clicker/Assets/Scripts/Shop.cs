@@ -16,16 +16,17 @@ public class Shop : MonoBehaviour {
     public int itemID;
     int fruitID;
     string itemDesc;
-    string[,] itemName = { // [ fruitID, itemID ]
-        { "PowerClick", "AutoClick", "Grandma", "Monster", "one small boi" },    // apple
-        { "PowerClick", "AutoClick", "Grandpa", "Lunitic", "one small girl" },    // pear
-        { "MasterClick", "AutoClick", "Old lady", "Chieftan", "one small monkeydude" },  // banana
-        { "PowerCrack", "AutoMat", "Guy with spear", "Sawing Machine", "one small milk-sipper" }   // coconut
+    string[,] itemName =
+    { // [ fruitID, itemID ]
+        { "PowerClick", "AutoClick", "Grandma", "Monster", "one small boi" }, // apple
+        { "PowerClick", "AutoClick", "Grandpa", "Lunitic", "one small girl" }, // pear
+        { "MasterClick", "AutoClick", "Old lady", "Chieftan", "one small monkeydude" }, // banana
+        { "PowerCrack", "AutoMat", "Guy with spear", "Sawing Machine", "one small milk-sipper" } // coconut
     };
 
     // choose fruitID, itemDesc, displays
-    void Start() {
-        
+    void Start()
+    {
         // fruitID based on lastLoadedScene
         for(int id = 0; id < SaveData.fruitName.Length; id++) {
             if (PlayerPrefs.GetString("lastLoadedScene") == SaveData.fruitName[id]) { fruitID = id; break; } }
@@ -39,7 +40,6 @@ public class Shop : MonoBehaviour {
         costDisplay.text = SaveData.FruitFix(SaveData.Shop[fruitID, itemID, 0], 3);
     }
 
-    // displays i update istället för start & purchase?
     void Update()
     {
         if (SaveData.Fruits[fruitID, 0] >= SaveData.Shop[fruitID, itemID, 0])
@@ -79,4 +79,5 @@ public class Shop : MonoBehaviour {
 
         AutoClick.autoClick.RestartAuto(); // Restart autoclick
     }
+
 }
